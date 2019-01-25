@@ -1,0 +1,51 @@
+ul {
+    list-style-type: none;
+    padding-inline-start: 30px;    
+}
+
+.folder {
+    color: #f6dd7d;
+    font-size: 17px;   
+}
+
+.folder-title {       
+    font-family: Arial;
+    font-size: 14px;
+    color: #253fae;
+    text-transform:capitalize;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+    display: inherit; 
+}
+
+.editable {
+    border: solid 1px green !important;
+}
+
+.file {    
+    font-size: 16px;   
+}
+
+.file-title {        
+    font-family: Arial;
+    font-size: 14px;
+    color: #253fae;
+    text-transform:capitalize;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+    display: inherit; 
+}
+
+.pdf {
+    color:red;
+}
+
+.html {
+    color:blue;
+}
+
+.selected {   
+    font-weight: 600;
+  }

@@ -1,0 +1,36 @@
+@import "assets/css/font-awesome.css";
+
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+#toolbar {
+    width: 65px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #243e55;
+    color:  #2e6da4;
+    transition: all 0.3s;
+}
+
+.toolbar-module {   
+    padding-top: 25px;
+}
+
+.toolbar-button {
+    padding: 10px;  
+}
+
+.glyphicon-edit {
+    font-size: 30px; 
+    font-weight: bold;
+    color: inherit;
+}
+
+.hide {
+    display: none;
+}

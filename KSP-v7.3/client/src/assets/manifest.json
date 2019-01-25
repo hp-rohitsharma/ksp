@@ -1,0 +1,14 @@
+{
+  "short_name": "KSP",
+  "name": "Knowledge Sharing Portal",
+  "background_color": "red",
+  "display": "standalone",
+  "theme_color": "#3367D6",
+  "icons": [
+    {
+      "src": "/images/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}

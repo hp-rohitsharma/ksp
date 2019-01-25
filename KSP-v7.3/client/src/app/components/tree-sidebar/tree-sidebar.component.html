@@ -1,0 +1,36 @@
+<div class="sidebar" (contextmenu) = "false">    
+    <ul id="myUL" class="list-group">
+        <input #filter id="myInput" list="suggestion" (keyup)="filterNodes(filter.value)" type="text" placeholder="Search Content  (minimum 3 characters)"
+            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Content  (minimum 3 characters)'">
+        <span class="search-loader" *ngIf="loading"></span>
+
+        <div class="scrollable">
+            <div class="tree-view">
+            <folder-view [folder]="root"></folder-view>
+            </div>
+            <br>
+            <div *ngIf="error" class="alert alert-danger">
+                <strong>Error!</strong> in loading ...
+            </div>
+
+        </div>
+    </ul>
+</div>
+
+<div [ngStyle]="locationCss" class="container">
+    <ul class="contextmenu">
+        <li *ngFor="let link of links">                      
+            <a *ngIf="link.action !== 'new_pdf'" (click)="onMenuSelection($event, link.action)" href="#" skipLocationChange>
+                <span class="context-menu-label">{{link.title}}</span>               
+            </a>
+            <a *ngIf="link.action === 'new_pdf'" (click)="file.click()" href="#" skipLocationChange>
+                <span class="context-menu-label">{{link.title}}</span>
+                <input type="file" #file hidden (change)="upload($event.target.files[0])" />               
+            </a>           
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="error" class="alert alert-danger">
+    <strong>Error!</strong>  in loading ... 
+</div>

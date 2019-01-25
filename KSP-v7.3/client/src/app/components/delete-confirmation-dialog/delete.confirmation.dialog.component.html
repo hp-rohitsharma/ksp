@@ -1,0 +1,7 @@
+<div class="alert alert-danger">
+  <strong>Alert!</strong> Confirm deletion.
+</div>
+<div class="buttons">
+  <button mat-button (click)="ignore()" cdkFocusInitial class="btn btn-success btn-sm">Ignore</button>
+  <button mat-button [mat-dialog-close]="true" class="btn btn-danger btn-sm">Delete</button>
+</div>

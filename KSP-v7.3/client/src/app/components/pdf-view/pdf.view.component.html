@@ -1,0 +1,17 @@
+<div>   
+    <div class="blog-area">
+        <h1 class="blog-title">{{blog.title}}</h1>
+        <p class="blog-info">{{blog.owner | uppercase}}, {{blog.created | date : "longDate"}}</p>
+        <hr>
+        <div [hidden]="!loading" class="loader"></div>
+        <div class="scrollable">
+            <iframe [hidden]="loading" [src]='fileURL' width="100%" frameborder="0" style="height:inherit"></iframe>
+        </div>
+    </div>
+    <hr>
+
+    <br>
+
+    <!--<h4>Leave a Comment:</h4>
+    <p><span class="badge">Comming Soon</span></p>  -->
+</div>

@@ -1,0 +1,23 @@
+<div class='welcome-area'>
+    <div class="welcome" *ngIf="showWelcome">
+        <div class="watermark">Knowledge Sharing Portal</div>
+        <!--<div class="linksOpenLinkService">
+            <ul>
+                <li><a routerLink="/view/welcome/new_blog"> How To Create New Blog </a></li>
+                <li><a (click)="showNewBlog=false;showUploadPdf=true;showChangeName=false;showSearch=false;showSuggestions=false;"> How To Upload PDF </a></li>
+                <li><a (click)="showNewBlog=false;showUploadPdf=false;showChangeName=true;showSearch=false;showSuggestions=false;"> How To Change Your Display Name </a></li>
+                <li><a (click)="showNewBlog=false;showUploadPdf=false;showChangeName=false;showSearch=true;showSuggestions=false;"> Search Capabilities </a></li>
+                <li><a (click)="showNewBlog=false;showUploadPdf=false;showChangeName=false;showSearch=false;showSuggestions=true;"> Share Suggestion or Report a Bug</a></li>
+            </ul>
+        </div>-->
+       
+        <div>For Demo <a (click)="demo()">Click Here</a></div>       
+    </div>  
+    <!--<div *ngIf="showDemo" class="demoarea"><img src="/assets/welcome/welcome.gif" /></div> -->
+    <div *ngIf="showDemo" class="demoarea">
+        <video autoplay loop muted playsinline controls>
+           <!-- <source src="oneDoesNotSimply.webm" type="video/webm">-->
+            <source src="/assets/welcome/welcome.mp4" type="video/mp4">
+        </video> 
+    </div>
+</div>

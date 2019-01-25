@@ -1,0 +1,124 @@
+<div [ngClass]="(hide === true) ? 'hide' : ''"> 
+<div class="sidebar">    
+    <ul id="myUL" class="list-group">
+        <input #filter id="myInput" list="suggestion" (keyup)="filterNodes(filter.value)" type="text" placeholder="Search Content  (minimum 3 characters)"
+            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Content  (minimum 3 characters)'">
+            <span class="search-loader" *ngIf="loading"></span>
+
+        <div class="scrollable">
+            <div>
+                <h5 class="mb-0" *ngIf="showNoFullResults">
+                    <button class="btn btn-link disabled search-message" aria-expanded="true" aria-controls="collapseOne">
+                        No Exact Phrase Found !
+                    </button>
+                </h5>
+                <li class="blog" *ngFor="let item of items | sort: ['-created',sorted]">
+                    <div class="row">
+                        <div class="col-lg-12 profile-pic">
+                            <div *ngIf="item.type=='text/html'" (click)="selectItem($event)">
+                                <a [routerLink]="['/view/html', item._id]" skipLocationChange>
+                                    <span class="title" [title]="item.title">{{item.title}}</span>
+                                    <span class="info"><span [ngClass]="(item.indexed === true) ? 'indexed' : 'unindexed'"
+                                            [title]="(item.indexed === true) ? 'Searchable' : 'Non-Searchable'"></span>
+                                        <span class="type-label-html">HTML</span>
+                                        {{users[item.owner] || item.owner | uppercase}}, {{item.created | date :
+                                        "longDate"}}</span>
+                                    <div>
+                                        <span class="tools">
+                                            <span href="#" (click)="delete(item._id)"><i class="fa fa-trash"></i></span>
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div *ngIf="item.type=='application/pdf'" (click)="selectItem($event)">
+                                <a [routerLink]="['/view/pdf', item._id]" skipLocationChange>
+                                    <span class="title" [title]="item.title">{{item.title}}</span>
+                                    <span class="info"><span [ngClass]="(item.indexed === true) ? 'indexed' : 'unindexed'"
+                                            [title]="(item.indexed === true) ? 'Searchable' : 'Non-Searchable'"></span>
+                                        <span class="type-label-pdf">PDF</span>
+                                        {{users[item.owner] || item.owner | uppercase}}, {{item.created | date :
+                                        "longDate"}}</span>
+                                    <div>
+                                        <span class="tools">
+                                            <span href="#" (click)="delete(item._id)"><i class="fa fa-trash"></i></span>
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            <br>
+            <div id="partials">
+                <h5 class="mb-0" *ngIf="showPartialSearchLink">
+                    <button (click)="loadPartialMatches()" class="btn btn-link" aria-expanded="true" aria-controls="collapseOne">
+                        See Partial Matches
+                    </button>
+                </h5>
+
+                <h5 class="mb-0" *ngIf="showPartialSearchTitle">
+                    <button (click)="showPartialResults=false;showPartialSearchTitle=false;showPartialSearchLink=true;showNoPartialResults=false;"
+                        class="btn btn-link disabled" aria-expanded="true" aria-controls="collapseOne">
+                        Partial Matches
+                    </button>
+                </h5>
+
+                <h5 class="mb-0" *ngIf="showNoPartialResults">
+                    <button class="btn btn-link disabled search-message" aria-expanded="true" aria-controls="collapseOne">
+                        No Partial Matches Found !
+                    </button>
+                </h5>
+
+                <div *ngIf="showPartialResults">
+                    <li class="blog" *ngFor="let item of partialItems">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div *ngIf="item.type=='text/html'" (click)="selectItem($event)">
+                                    <a [routerLink]="['/view/html', item._id]" skipLocationChange>
+                                        <span class="title" [title]="item.title">{{item.title}}</span>
+                                        <span class="info"><span [ngClass]="(item.indexed === true) ? 'indexed' : 'unindexed'"
+                                                [title]="(item.indexed === true) ? 'Searchable' : 'Non-Searchable'"></span>
+                                            <span class="type-label-html">HTML</span>
+                                            {{users[item.owner] || item.owner | uppercase}}, {{item.created | date :
+                                            "longDate"}}</span><br>
+                                        <span class="matched-words"><span class="matched-word" *ngFor="let matchedWord of item.matchedWords">{{matchedWord}}
+                                            </span></span>
+                                        <div>
+                                            <span class="tools">
+                                                <span href="#" (click)="delete(item._id)"><i class="fa fa-trash"></i></span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div *ngIf="item.type=='application/pdf'" (click)="selectItem($event)">
+                                    <a [routerLink]="['/view/pdf', item._id]" skipLocationChange>
+                                        <span class="title" [title]="item.title">{{item.title}}</span>
+                                        <span class="info"><span [ngClass]="(item.indexed === true) ? 'indexed' : 'unindexed'"
+                                                [title]="(item.indexed === true) ? 'Searchable' : 'Non-Searchable'"></span>
+                                            <span class="type-label-pdf">PDF</span>
+                                            {{users[item.owner] || item.owner | uppercase}}, {{item.created | date :
+                                            "longDate"}}</span><br>
+                                        <span class="matched-words"><span class="matched-word" *ngFor="let matchedWord of item.matchedWords">{{matchedWord}}
+                                            </span></span>
+                                        <div>
+                                            <span class="tools">
+                                                <span href="#" (click)="delete(item._id)"><i class="fa fa-trash"></i></span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            </div>
+
+            <div *ngIf="error" class="alert alert-danger">
+                <strong>Error!</strong> in loading ...
+            </div>
+            <!--<div [hidden]="!loading" class="loader"></div>   -->
+        </div>                           
+    </ul>
+</div>
+</div>

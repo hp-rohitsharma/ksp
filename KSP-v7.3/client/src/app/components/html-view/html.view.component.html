@@ -1,0 +1,30 @@
+<div [ngClass]="(reader_mode === true) ? 'overlay' : ''">        
+    <div class="blog-area">        
+        <h1 class="blog-title">{{blog.title}}</h1>        
+        <p class="blog-info">{{blog.owner | uppercase}}, {{blog.created | date : "longDate"}}  
+                <button (click)="toggleReaderMode()" type="button" class="btn btn-info reader-button btn-sm" title="Full View"><i class="fa fa-expand"></i></button> 
+                <button (click)="edit(blog._id)" type="button" class="btn btn-warning edit-button btn-sm" title="Edit"><i class="fa fa-edit"></i></button> 
+                <button (click)="delete(blog._id)" type="button" class="btn btn-danger delete-button btn-sm" title="Delete"><i class="fa fa-trash"></i></button></p>
+        <div class="progress"></div>
+        <hr>       
+        <div [hidden]="!loading" class="loader"></div>          
+        <div id="blogContent" (scroll)="onScroll($event)" class="scrollable" [hidden]="loading" [innerHTML]="blog.content | safeHtml"></div>
+    </div>
+    <hr>   
+    <br>
+    
+
+    <!--<h4>Leave a Comment:</h4>
+    <p><span class="badge">Comming Soon</span></p>-->
+    <!--<form role="form">
+        <div class="form-group">
+            <textarea class="form-control" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    <hr>
+    <p>
+        <span class="badge">2</span> Comments:</p>
+    <br>
+    <div [innerHTML]="comments.html"></div>-->
+</div>

@@ -1,0 +1,15 @@
+<div>
+    <div data-toggle="collapse" attr.data-target="#{{folder.id}}">
+        <a class="folder" href="#" (contextmenu)="onContextMenu($event, folder); false" (click)="onClick($event, folder); false"><i [ngClass]="(folder.open === true) ? 'fa fa-folder-open' : 'fa fa-folder'" aria-hidden="true"></i> <span class="folder-title">{{folder.name}}</span></a>
+    </div>
+    <div id="{{folder.id}}" class="collapse">
+        <ul>
+            <li *ngFor="let folder of folder.folders"> 
+                <folder-view [folder]="folder"></folder-view>
+            </li>
+            <li *ngFor="let file of folder.files">
+                <a class="file" href="#" (contextmenu)="onContextMenu($event, file); false" (click)="onClick($event, file); false" (file)="file"><i attr.class="{{file.class}}" aria-hidden="true"></i> <span class="file-title">{{file.name}}</span></a>
+            </li>
+        </ul>
+    </div>
+</div>

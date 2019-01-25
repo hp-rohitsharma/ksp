@@ -1,0 +1,29 @@
+.header-options { 
+    float: right;
+    margin-right:6px; 
+    color: #fff;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.display-name {
+    text-transform:capitalize;
+}
+
+.header {
+   background :#243e55;  
+}
+
+.header-logo {
+    margin-left: 3%;    
+    color: #fff !important;
+    font-size: 16px;  
+    font-family: Arial; 
+    font-weight: 600;   
+    font-style: oblique
+    /*float: right;*/
+ }
+
+ .hide {
+     display: none;
+ }

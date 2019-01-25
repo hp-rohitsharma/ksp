@@ -1,0 +1,7 @@
+<div class="alert alert-danger">
+  Ignore Changes !!
+</div>
+<div class="buttons">
+  <button mat-button (click)="ignoreChanges(true)" cdkFocusInitial class="btn btn-success btn-sm">Yes</button>
+  <button mat-button [mat-dialog-close]="true" (click)="ignoreChanges(false)"  class="btn btn-danger btn-sm">No</button>
+</div>

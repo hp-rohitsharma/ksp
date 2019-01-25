@@ -1,0 +1,40 @@
+<div [ngClass]="(hide === true) ? 'hide' : ''">
+<div class="wrapper">  
+  <nav id="toolbar">
+    <br>
+    <div class="toolbar-module">
+      <div class="toolbar-button">
+        <button [routerLink]="['view/welcome']" type="button" class="btn btn-primary" title="Home">
+          <i class="fa fa-home"></i>
+        </button>
+      </div>
+      <div class="toolbar-button">
+        <button (click)="create()" type="button" class="btn btn-primary" title="Create New">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+      <!--<div class="toolbar-button">
+        <button [disabled]="!editable" (click)="edit()" type="button" class="btn btn-primary" title="Edit Blog">
+          <i class="fa fa-edit"></i>
+        </button>
+      </div>-->
+      <div class="toolbar-button">
+        <label for="file-selector" class="btn btn-primary" title="Upload File (PDF)">
+          <i class="fa fa-upload"></i>
+          <input id="file-selector" type="file" accept="application/pdf" style="display: none;" (change)="upload($event.target.files[0])">
+        </label>
+      </div>
+      <div class="toolbar-button">
+        <button (click)="settings()" type="button" class="btn btn-primary" title="Settings">
+          <i class="fa fa-wrench"></i>
+        </button>
+      </div>
+      <div class="toolbar-button">
+          <button (click)="report()" type="button" class="btn btn-primary" title="Report to Admin">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+          </button>
+        </div>      
+    </div>
+  </nav>
+</div>
+</div>
